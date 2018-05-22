@@ -1,0 +1,69 @@
+<div id="modal-content" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h3 class="title-blue modal-title">
+                </h3>
+
+            </div>
+            <div class="modal-body app-modal-body">
+
+                <form id="form" role="form">
+
+                    <div class="row">
+                        <div class='col-sm-12'>
+                            <div class="form-group">
+                                <p id="reasonTitle"> {{$t 'survey.priority.add.reason'}} * </p>
+                                <textarea value="{{indicatorPriority.reason}}" 
+                                          class="form-control" 
+                                          name="reason"
+                                          id="reason"
+                                          rows="5"
+                                          maxlength="500"
+                                          placeholder="Description"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row forPriority">
+                        <div class='col-sm-12'>
+                            <div class="form-group">
+                                <p> {{$t 'survey.priority.add.action'}} * </p>
+                                <textarea value="{{indicatorPriority.action}}"  
+                                          class="form-control" 
+                                          name="action" 
+                                          placeholder="Description" 
+                                          maxlength="500"
+                                          rows="5"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row forPriority">
+                        <div class='col-sm-12'>
+                            <div class="form-group">
+                                <p> {{$t 'survey.priority.add.estimated-date'}} * </p>
+                                <div class='input-group date' id='datetimepicker'>
+                                    <input id="fecha" value={{indicatorPriority.estimatedDate}} type='text' class="form-control" placeholder="DD/MM/YYYY" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer app-modal-footer">
+                <div class="row">
+                    <div class="modal-footer-button-content">
+                        <div class="modal-footer-button form-item-right col-xs-6 col-xs-offset-6">
+                            <button type="button" id="cancel-priority" class="btn btn-danger form-button btn-primary margin-left-30">{{$t 'general.buttons.cancel'}}</button>
+                            <button type="button" type="submit" id="add-priority" class="btn form-button btn-primary">{{$t 'general.buttons.accept'}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -165,7 +165,8 @@
         "indicator-not-answered": "Durante la encuesta, has elegido no responder la pregunta",
         "select-delete": "Eliminar esta prioridad",
         "mising-field": "Campo '\"%{field}\"' faltante",
-        "min-priorities": "Seleccione al menos %{min} prioridades"
+        "min-priorities": "Seleccione al menos %{min} prioridades",
+        "changes-saved": "Tus cambios han sido guardados exitosamente"
       },
       "add": {
         "indicator": "Indicador",
@@ -173,6 +174,10 @@
         "action": "¿Qué debo hacer para lograrlo?",
         "estimated-date": "¿Cuándo lo tendré?",
         "comments": "Comentarios"
+      },
+      "buttons": {
+        "save": "Guardar",
+        "cancel": "Cancelar"
       }
     },
     "attainment": {
@@ -237,7 +242,8 @@
       "email": "Correo electrónico",
       "place": "Lugar",
       "edit": "Editar ficha de la familia",
-      "no-priority": "Ningún indicador fue priorizado en este semáforo"
+      "no-priority": "Ningún indicador fue priorizado en este semáforo",
+      "prioritize": "Priorizar"
     },
     "manage": {
       "manage-families": "Gestión de familias",

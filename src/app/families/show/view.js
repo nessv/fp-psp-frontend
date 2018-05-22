@@ -9,11 +9,13 @@ import storage from '../storage';
 import TermCondPolView from '../../termcondpol/view';
 import TermCondPolModel from '../../termcondpol/model';
 import session from "../../../common/session";
+import ParameterModel from "../../parameter/model";
 
 export default Mn.View.extend({
   template: Template,
   events: {
-    'click #newSurvey': 'newSurvey'
+    'click #newSurvey': 'newSurvey',
+    'click #set-priorities' : 'setPriorities'
   },
   initialize(options) {
     this.app = options.app;
@@ -35,6 +37,8 @@ export default Mn.View.extend({
     if (session.userHasRole('ROLE_SURVEY_USER')) {
       this.$el.find('#newSurvey').show();
     }
+
+    this.getParameter();
   },
   onAttach() {
     if (this.app.getSession().userHasRole('ROLE_APP_ADMIN')) {
@@ -119,7 +123,31 @@ export default Mn.View.extend({
 
         }));
       });
-
     Bn.history.navigate(`/survey/${this.model.attributes.snapshot_indicators.survey_id}/termcondpol/TC/ESP`);
+  },
+  getParameter(){
+    const self = this;
+    this.parameterModel = new ParameterModel();
+    this.parameterModel.fetch({
+      data: { keyParameter: 'maximum_time_since_snapshot'},
+      success(response) {
+        self.parameterModel = response.toJSON();
+        self.validateParameter(self.parameterModel.value);
+      }
+    });
+  },
+  validateParameter(parameter) {
+    var createdAt = moment(this.model.attributes.snapshot_indicators.created_at);
+    if(moment().diff(createdAt, 'days') < parameter) {
+      if (session.userHasRole('ROLE_SURVEY_USER') || session.userHasRole('ROLE_HUB_USER')) {
+        $('#set-priorities').show();
+      }
+    }
+  },
+  setPriorities() {
+    Bn.history.navigate(
+      `families/${this.model.attributes.id}/snapshots/
+      ${this.model.attributes.snapshot_indicators.snapshot_economic_id}/indicators`, 
+      true);
   }
 });

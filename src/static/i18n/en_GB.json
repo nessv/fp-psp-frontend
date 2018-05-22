@@ -165,7 +165,8 @@
         "indicator-not-answered": "You have chosen not to answer the question",
         "select-delete": "Remove this priority",
         "mising-field": "Missing '\"%{field}\"' field",
-        "min-priorities": "Please select at least %{min} indicators"
+        "min-priorities": "Please select at least %{min} indicators",
+        "changes-saved": "Your changes have been saved successfully"
       },
       "add": {
         "indicator": "Indicator",
@@ -173,6 +174,10 @@
         "action": "What do I do to attain it?",
         "estimated-date": "When will I have it?",
         "comments": "Comments"
+      },
+      "buttons": {
+        "save": "Save changes",
+        "cancel": "Cancel"
       }
     },
     "attainment": {
@@ -237,7 +242,8 @@
       "email": "Email",
       "place": "Place",
       "edit": "Edit household file",
-      "no-priority": "No indicator was prioritized in this stoplight"
+      "no-priority": "No indicator was prioritized in this stoplight",
+      "prioritize": "Prioritize"
     },
     "manage": {
       "manage-families": "Manage households",
