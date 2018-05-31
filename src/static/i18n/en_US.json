@@ -217,6 +217,10 @@
     "messages": {
       "not-answer": "Select your answer!",
       "answer-validation": "You must first accept the terms and conditions!"
+    },
+    "templates": {
+      "term-cond": "<h1>Terms and Conditions</h1><div class='text-box'>Please Read Carefully Before Using This Application</div>",
+      "pol": "<h1>Privacy Policies</h1><div class='text-box'>Please Read Carefully Before Using This Application</div>"
     }
   },
   "family": {
@@ -304,6 +308,8 @@
       "description-length-exceeded": "Description must have a maximum of 256 characters",
       "information": "Information",
       "information-length-exceeded": "Information must have a maximum of 256 characters",
+      "terms-upload": "Click to upload Terms & Conditions",
+      "pol-upload": "Click to upload Privacy Policy",
       "buttons": {
         "add": "ADD HUB",
         "save": "SAVE HUB",
@@ -319,6 +325,10 @@
       "confirm-text": "Are you sure you want to delete this Hub?",
       "success": "The Hub has been deleted",
       "failed": "The Hub could not be deleted"
+    },
+    "messages": {
+      "bad-file": "File must be an HTML. Please choose another one or default value will be applied",
+      "insert-file": "Please insert a valid file"
     }
   },
   "user": {

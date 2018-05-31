@@ -21,6 +21,7 @@ export default Mn.View.extend({
     this.app = options.app;
     this.entity = options.entity;
     this.model = options.model;
+    this.currentApplicationId = this.app.getSession().attributes.user.application.id;
   },
   onRender() {
     const headerItems = storage.getSubHeaderItems(this.model);
@@ -107,14 +108,13 @@ export default Mn.View.extend({
     this.app.getSession().save({reAnswer: false, formData: null});
     const model = new TermCondPolModel();
     const app = this.app;
-    const language = this.app.getSession().getLocale() === 'es_PY' ? 'ESP' : 'ENG';
     model
       .fetch({
         data: {
           type: 'TC',
-          language,
           surveyId: `${this.model.attributes.snapshot_indicators.survey_id}`,
-          familyId: `${this.model.attributes.snapshot_indicators.family.familyId}`
+          familyId: `${this.model.attributes.snapshot_indicators.family.familyId}`,
+          applicationId: self.currentApplicationId
         }
       })
       .then(() => {
@@ -127,7 +127,7 @@ export default Mn.View.extend({
 
         }));
       });
-    Bn.history.navigate(`/survey/${this.model.attributes.snapshot_indicators.survey_id}/termcondpol/TC/ESP`);
+    Bn.history.navigate(`/survey/${this.model.attributes.snapshot_indicators.survey_id}/termcondpol/TC/${this.currentApplicationId}`);
   },
   getParameter(){
     const self = this;
@@ -143,7 +143,7 @@ export default Mn.View.extend({
   validateParameter(parameter) {
     var createdAt = moment(this.model.attributes.snapshot_indicators.created_at);
     if(moment().diff(createdAt, 'days') < parameter) {
-      if (session.userHasRole('ROLE_SURVEY_USER') || session.userHasRole('ROLE_HUB_USER')) {
+      if (session.userHasRole('ROLE_SURVEY_USER') || session.userHasRole('ROLE_APP_ADMIN')) {
         $('#set-priorities').show();
       }
     }

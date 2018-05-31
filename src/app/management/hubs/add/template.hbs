@@ -24,7 +24,7 @@
               <p id="image-logo-text" class="text-center select-file">{{$t 'hub.form.logo-upload'}}</p>
               <div class="form-group">
                 <input type="file" name="image" id="input-image-file" value="{{application.image}}"
-                       class="form-control" style="display: none;">
+                       class="form-control" style="display: none">
               </div>
             </div>
           </div>
@@ -50,6 +50,22 @@
                   <input name="information" type="text" value="{{application.information}}"
                          placeholder="{{$t 'hub.form.information'}}" class="input-bg-gray form-control" required>
                 </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="margin-tb-35px" id="img-cam">
+                      <img id="termcond-file" src="{{formImage}}" class="card-img-top img-responsive center-block select-term-file">
+                      <p id="term-text" class="text-center select-term-file">{{$t 'hub.form.terms-upload'}}</p>
+                      <input type="file" name="terms" id="input-terms-file" value="{{termCond}}"
+                        class="form-control" style="display: none" accept=".html">
+                      <img id="pol-file" src="{{formImage}}" class="card-img-top img-responsive center-block select-pol-file">
+                      <p id="pol-text" class="text-center select-pol-file">{{$t 'hub.form.pol-upload'}}</p>
+                      <input type="file" name="pol" id="input-pol-file" value="{{pol}}"
+                        class="form-control" style="display: none" accept=".html">
+                    </div>
+                  </div>
+                </div>
+
 
                 <div class="form-group">
                   <div class="row">

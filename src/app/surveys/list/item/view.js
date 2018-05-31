@@ -19,6 +19,7 @@ export default Mn.View.extend({
     this.deleteSurvey = options.deleteSurvey;
     this.model = options.model;
     this.model.attributes.created_at = this.formartterWithTime(this.model.attributes.created_at);
+    this.currentApplicationId = this.app.getSession().attributes.user.application.id;
   },
   onRender() {
     if (this.app.getSession().userHasRole('ROLE_ROOT')) {
@@ -65,11 +66,10 @@ export default Mn.View.extend({
 
   handlerTermsAndConditions(event){
     event.preventDefault();
-    const language = this.app.getSession().getLocale() === 'es_PY' ? 'ESP' : 'ENG';
       if (!session.userHasRole('ROLE_USER') && !session.userHasRole('ROLE_SURVEY_USER')) {
         return;
       }
-    Bn.history.navigate(`/survey/${this.model.attributes.id}/termcondpol/TC/${language}`, true);
+    Bn.history.navigate(`/survey/${this.model.attributes.id}/termcondpol/TC/${this.currentApplicationId}`, true);
   },
 
   handleAnswer(event) {
