@@ -21,7 +21,9 @@ export default Mn.View.extend({
     this.app = options.app;
     this.entity = options.entity;
     this.model = options.model;
-    this.currentApplicationId = this.app.getSession().attributes.user.application.id;
+    if(this.app.getSession().attributes.user.application !== null) {
+      this.currentApplicationId = this.app.getSession().attributes.user.application.id;
+    }
   },
   onRender() {
     const headerItems = storage.getSubHeaderItems(this.model);

@@ -20,8 +20,9 @@ export default Mn.View.extend({
     this.surveyId = options.surveyId;
     this.reAnswer = options.reAnswer;
     this.formData = options.formData;
-    this.applicationId = 0;
-    this.currentApplicationId = this.app.getSession().attributes.user.application.id;
+    if(this.app.getSession().attributes.user.application !== null) {
+      this.currentApplicationId = this.app.getSession().attributes.user.application.id;
+    }
   },
 
   onRender() {

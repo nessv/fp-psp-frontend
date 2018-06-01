@@ -19,7 +19,9 @@ export default Mn.View.extend({
     this.deleteSurvey = options.deleteSurvey;
     this.model = options.model;
     this.model.attributes.created_at = this.formartterWithTime(this.model.attributes.created_at);
-    this.currentApplicationId = this.app.getSession().attributes.user.application.id;
+    if(this.app.getSession().attributes.user.application !== null) {
+      this.currentApplicationId = this.app.getSession().attributes.user.application.id;
+    }
   },
   onRender() {
     if (this.app.getSession().userHasRole('ROLE_ROOT')) {
