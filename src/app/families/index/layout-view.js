@@ -6,14 +6,10 @@ import CollectionView from './collection-view';
 import utils from '../../utils';
 import FamiliesCollection from '../collection';
 import OrganizationsModel from '../../management/organizations/model';
-import CitiesModel from '../../cities/model';
-import CountiesModel from '../../countries/model';
 
 export default Mn.View.extend({
   template: Template,
   collection: new CollectionView(),
-  citiesCollection: new CitiesModel(),
-  countiesCollection: new CountiesModel(),
   organizationsCollection: new OrganizationsModel(),
   regions: {
     list: '#family-list'
@@ -42,32 +38,6 @@ export default Mn.View.extend({
   loadSelects() {
     const self = this;
 
-    this.citiesCollection.fetch({
-      success(response) {
-        self.citiesCollection = response.toJSON();
-        $.each(self.citiesCollection, (index, element) => {
-          $('#city').append(
-            $('<option></option>')
-              .attr('value', element.id)
-              .text(element.city)
-          );
-        });
-      }
-    });
-
-    this.countiesCollection.fetch({
-      success(response) {
-        self.countiesCollection = response.toJSON();
-        $.each(self.countiesCollection, (index, element) => {
-          $('#country').append(
-            $('<option></option>')
-              .attr('value', element.id)
-              .text(element.country)
-          );
-        });
-      }
-    });
-
     this.organizationsCollection.fetch({
       success(response) {
         self.organizationsCollection = response.get('list');
@@ -94,8 +64,6 @@ export default Mn.View.extend({
 
       const params = {
         organization_id: $('#organization').val(),
-        country_id: $('#country').val(),
-        city_id: $('#city').val(),
         free_text: $('#search').val()
       };
 
